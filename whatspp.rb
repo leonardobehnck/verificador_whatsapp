@@ -15,30 +15,20 @@
 #2. %r{abc}   é feito com %r{}
 #3.Regexp.new('expressao')
 
-#Operador de comparação
 
-puts /by/ =~ 'ruby' # a primeira letra aparece na posicao 2
+puts 'Olá, tudo bem? Informe seu número conforme o formato abaixo:'
+puts '(99) 9 9999-9999'
 
-puts 'ruby' =~ /by/
 
-puts 'ruby' =~ /rails/ #devolve vazio
+numero_do_usuario = gets.chomp
+#captura numero do usuario
 
-#metodo math do Reges
-frase = 'ola como vai voce?'
-match_data = /como/.match(frase)
-puts match_data
+formato_do_numero = /\(\d{2}\) \d \d{4}-\d{4}/
+# expressão regular para verificar o formato do numero
 
-#pre match
-#retorna oq vem antes do "como"
-puts match_data.pre_match
-
-#post.match
-puts match_data.post_match
-
-#Como procurar "?"
-
-#tem que informar a barra antes para trabalhar com pontuação
-puts /\?/.match('TUdo bem?')
-
-#passando com variavel
-puts /\?/.match(frase)
+if formato_do_numero.match(numero_do_usuario)
+  puts '-----------'
+  puts "Sucesso! O Número informado foi: #{numero_do_usuario}"
+else 
+  puts 'Você digitou um número inválido, tente novamente.'
+end
